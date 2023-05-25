@@ -1,0 +1,43 @@
+{
+  "name": "sfw-prototype",
+  "version": "0.1.0",
+  "description": "A simple frontend web framework that tries to be minimal and auditable.",
+  "main": "src.js",
+  "types": "src.d.js",
+  "scripts": {
+    "mk-dist": "tsc -d src.ts",
+    "rm-dist": "rm src.js && rm src.d.ts",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/0scarB/sfw-prototype.git"
+  },
+  "keywords": [
+    "web",
+    "framework",
+    "minimal",
+    "auditable"
+  ],
+  "author": "Oscar Butler-Aldridge",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/0scarB/sfw-prototype/issues"
+  },
+  "homepage": "https://github.com/0scarB/sfw-prototype#readme",
+  "devDependencies": {
+    "@types/jest": "^29.5.1",
+    "ts-jest": "^29.1.0",
+    "typescript": "^5.0.4"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "transform": {
+      "^.*.ts$": ["ts-jest", {
+        "tsconfig": {
+          "esModuleInterop": true
+        }
+      }]
+    }
+  }
+}
