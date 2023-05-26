@@ -1,3 +1,33 @@
+type VirtualDOM = El | TextNode
+
+type El = [TagName, Attrs, VirtualDOM[]]
+type TagName = string
+type Attrs = {[name: AttrName]: AttrValue}
+type AttrName = string
+type AttrValue = string
+
+type TextNode = string
+
+
+const renderVirtualDom = (vDom: VirtualDOM): HTMLElement | Text =>
+    typeof vDom === "object"
+        ? renderVirtualEl(vDom)
+        : renderVirtualText(vDom)
+
+const renderVirtualEl = ([tagName, attrs, children]: El): HTMLElement => {
+    const el = document.createElement(tagName)
+    for (const [attrName, attrValue] of Object.entries(attrs)) {
+        el.setAttribute(attrName, attrValue)
+    }
+    for (const child of children) {
+        el.appendChild(renderVirtualDom(child))
+    }
+
+    return el
+}
+
+const renderVirtualText = (text: string): Text => document.createTextNode(text)
+
 // Errors as values
 // ===========================================================================
 
